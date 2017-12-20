@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kostasFQ/workCost/issues"
   },
-  "homepage": "https://github.com/kostasFQ/workCost#readme"
+  "homepage": "https://github.com/kostasFQ/workCost#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
