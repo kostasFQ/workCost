@@ -9,11 +9,23 @@
 </head>
 <body>
     <header>
-        <div>
-            hello
-        </div>
+        <div class="headerTitle"> How much do you cost..? </div>
     </header>
-    xxxx
-    
+    <div>
+       <div>
+            <span> Зп в месяц -</span>
+            <input type="text" id='InputCurrencyValue'>
+            <select name="currency" id="currency">
+                <option value="$">$</option>
+                <option value="&#8364;">&#8364;</option>
+                <option value="BYN">BYN</option>
+                <option value="RUR">RUR</option>
+                <option value="UAH">UAH</option>
+            </select>
+            <button onclick=push()>push</button>
+       </div> 
+    </div>
+    <div id='ansverCost'></div>
+    <script src="./clientScript.js"></script>
 </body>
 </html>
