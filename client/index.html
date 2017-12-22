@@ -14,7 +14,8 @@
     <div>
        <div>
             <span> Зп в месяц -</span>
-            <input type="text" id='InputCurrencyValue'>
+            
+            <input type="text" id='InputCurrencyValue' name='z'>
             <select name="currency" id="currency">
                 <option value="$">$</option>
                 <option value="&#8364;">&#8364;</option>
@@ -26,6 +27,9 @@
        </div> 
     </div>
     <div id='ansverCost'></div>
+    <div>
+        <button onclick=get()>get</button>
+    </div>
     <script src="./clientScript.js"></script>
 </body>
 </html>
