@@ -13,23 +13,22 @@
     </header>
     <div>
        <div>
-            <span> Зп в месяц -</span>
-            
+            <span> Оклад -</span>
             <input type="text" id='InputCurrencyValue' name='z'>
             <select name="currency" id="currency">
-                <option value="$">$</option>
-                <option value="&#8364;">&#8364;</option>
                 <option value="BYN">BYN</option>
+                <option value="USD">$</option>
+                <option value="EUR">&#8364;</option>
                 <option value="RUR">RUR</option>
                 <option value="UAH">UAH</option>
             </select>
-            <button onclick=push()>push</button>
+            <button onclick=post()>push</button>
        </div> 
     </div>
-    <div id='ansverCost'></div>
     <div>
-        <button onclick=get()>get</button>
+        <button onclick=go()>go</button>
     </div>
+    <div id='timer'></div>
     <script src="./clientScript.js"></script>
 </body>
 </html>
