@@ -1,3 +1,13 @@
+window.onload = function() {
+   getCurrency();
+    
+    /*let xhr = new XMLHttpRequest();
+    xhr.open('POST','/allCurrency', true);
+    xhr.setRequestHeader('Content-Type', 'text/plain');
+    xhr.send(test);*/
+
+};
+
 function post(){
     let costInput = document.getElementById('InputCurrencyValue').value;
     let currency = document.getElementById('currency').value;
@@ -9,10 +19,16 @@ function post(){
         xhr.setRequestHeader('Content-Type', 'text/plain');
         xhr.send(price);
     } else { alert('wrong!') }
-
 };
 
 function go() {
+    let timer = document.getElementById('timer');
+    let inSecond;
+    let cost = 0;
+
+    get();
+    summ();
+
     function get() {
         let xhr = new XMLHttpRequest();
     
@@ -35,20 +51,11 @@ function go() {
             timer.innerHTML = (cost/10).toFixed(4) + ' за - ' + (secs/10).toFixed(0) + 'секунд';
         }, 100);
     };
-
-    let timer = document.getElementById('timer');
-    let inSecond;
-    let cost = 0;
-
-    get();
-    summ();
 };
 
-
-window.onload = function() {
-    getCurrency();
-};
 function getCurrency(){
+    let curr = [];
+
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://www.nbrb.by/API/ExRates/Rates?Periodicity=0', true);
     xhr.send();
@@ -56,21 +63,24 @@ function getCurrency(){
         xhr.onreadystatechange = function(){
             if(xhr.readyState === 4 && xhr.status === 200) {
                 let currency = JSON.parse( xhr.responseText);
-                //console.log(currency);
                 currency.map( function(val, i) {
                     if(val.Cur_Abbreviation === "USD" || 
                     val.Cur_Abbreviation === "EUR" || 
                     val.Cur_Abbreviation === "RUB" ||
-                    val.Cur_Abbreviation === "UAH"
-                    ) {
-                        console.log(val.Cur_Name, val.Cur_OfficialRate, val.Cur_Scale);
+                    val.Cur_Abbreviation === "UAH") {
+                        curr.push({'scale':val.Cur_Scale, 'name':val.Cur_Name, 'rate':val.Cur_OfficialRate})
                     };
-                    
+                    return curr;
                 } );
+                let sendCurr = JSON.stringify(curr)
+                console.log( sendCurr );
 
+                let newXhr = new XMLHttpRequest();
+                newXhr.open('POST','/allCurrency', true);
+                newXhr.setRequestHeader('Content-Type', 'text/plain');
+                newXhr.send(sendCurr);
             }
+            
         }
-        
-        
 };
 

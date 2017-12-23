@@ -1,17 +1,24 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-let cors = require('cors');
 
 let price = [];
+let allCurrency = [];
+
 
 app.use(express.static('client'));
 app.use(bodyParser.text());
+app.use(bodyParser.json());
 
 app.post('/cur', function(req, res) {
     price = req.body.split(' ');
     console.log(price);
 } );
+
+app.post('/allCurrency', function(req, res){
+    allCurrency = JSON.parse(req.body);
+    console.log(allCurrency);
+})
 
 app.get('/cur', function(req, res) {
     let day = (+price[0]/21).toFixed(2);
