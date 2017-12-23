@@ -6,15 +6,36 @@ body{
 header{
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
 
     width: 100%;
-    height: 100px;
     box-sizing: border-box;
 }
 .headerTitle {
     display: flex;  
-    height: auto;
-    font-size: 12vh;
+    font-size: 4em;
+}
+.mainInput{
+    display: flex;
+    justify-content: center;
+}
+#InputCurrencyValue{
+    display: flex;
+    width: 40%;
+    font-size: 2em;
+    border-bottom: 2px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none; 
+}
+#currency{
+    background: none; 
+    font-size: 2em;
+    border-bottom: 2px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none; 
+    cursor: pointer;
+
 }

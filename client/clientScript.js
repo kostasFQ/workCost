@@ -1,11 +1,5 @@
 window.onload = function() {
    getCurrency();
-    
-    /*let xhr = new XMLHttpRequest();
-    xhr.open('POST','/allCurrency', true);
-    xhr.setRequestHeader('Content-Type', 'text/plain');
-    xhr.send(test);*/
-
 };
 
 function post(){

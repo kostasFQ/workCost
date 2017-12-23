@@ -3,12 +3,12 @@ const app = express();
 const bodyParser = require('body-parser');
 
 let price = [];
+
 let allCurrency = [];
 
 
 app.use(express.static('client'));
 app.use(bodyParser.text());
-app.use(bodyParser.json());
 
 app.post('/cur', function(req, res) {
     price = req.body.split(' ');
@@ -21,9 +21,9 @@ app.post('/allCurrency', function(req, res){
 })
 
 app.get('/cur', function(req, res) {
-    let day = (+price[0]/21).toFixed(2);
-    let hour = (day/8).toFixed(2);
-    let min = (hour/60).toFixed(2);
+    let day = +price[0]/21;
+    let hour = day/8;
+    let min = hour/60;
     let sec = (min/60).toFixed(5);
     res.send( {
         day : day,

@@ -9,22 +9,23 @@
 </head>
 <body>
     <header>
-        <div class="headerTitle"> How much do you cost..? </div>
+        <div class="headerTitle"> Сколько ты стоишь..? </div>
     </header>
-    <div>
-       <div>
-            <span> Оклад -</span>
-            <input type="text" id='InputCurrencyValue' name='z'>
-            <select name="currency" id="currency">
-                <option value="BYN">BYN</option>
-                <option value="USD">$</option>
-                <option value="EUR">&#8364;</option>
-                <option value="RUR">RUR</option>
-                <option value="UAH">UAH</option>
-            </select>
-            <button onclick=post()>push</button>
-       </div> 
-    </div>
+
+    <div class="mainInput">
+        <input type="text" id='InputCurrencyValue' placeholder="Оклад">
+        <select name="currency" id="currency">
+            <option value="BYN">BYN</option>
+            <option value="USD">$</option>
+            <option value="EUR">&#8364;</option>
+            <option value="RUB">RUB</option>
+            <option value="UAH">UAH</option>
+        </select>
+        
+   </div> 
+   <div class="mainInput">
+    <button onclick=post()>push</button>
+   </div>
     <div>
         <button onclick=go()>go</button>
     </div>
