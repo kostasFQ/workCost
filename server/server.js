@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 
 let price = [];
-
 let allCurrency = [];
 
 
@@ -24,7 +23,7 @@ app.get('/cur', function(req, res) {
     let day = +price[0]/21;
     let hour = day/8;
     let min = hour/60;
-    let sec = (min/60).toFixed(5);
+    let sec = +(min/60).toFixed(5);
     res.send( {
         day : day,
         hour : hour,

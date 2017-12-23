@@ -27,7 +27,7 @@ header{
     border-bottom: 2px solid black;
     border-top: none;
     border-left: none;
-    border-right: none; 
+    border-right: none;
 }
 #currency{
     background: none; 
@@ -37,5 +37,14 @@ header{
     border-left: none;
     border-right: none; 
     cursor: pointer;
-
+}
+#button {
+    margin-top: 1%;
+    font-size: 2em;
+    width: 40%;
+    background: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
+    cursor: pointer;
 }

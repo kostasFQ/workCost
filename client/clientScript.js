@@ -13,39 +13,43 @@ function post(){
         xhr.setRequestHeader('Content-Type', 'text/plain');
         xhr.send(price);
     } else { alert('wrong!') }
-};
 
-function go() {
-    let timer = document.getElementById('timer');
-    let inSecond;
-    let cost = 0;
+    go();
 
-    get();
-    summ();
-
-    function get() {
-        let xhr = new XMLHttpRequest();
+    function go() {
+        let timer = document.getElementById('timer');
+        let inSecond;
+        let cost = 0;
     
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState === 4 && xhr.status === 200) {
-                let ansver = xhr.responseText;
-                console.log(JSON.parse(ansver));
-                inSecond = JSON.parse(ansver).sec;
+        get();
+        summ();
+    
+        function get() {
+            let xhr = new XMLHttpRequest();
+        
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && xhr.status === 200) {
+                    let ansver = xhr.responseText;
+                    console.log(JSON.parse(ansver));
+                    inSecond = JSON.parse(ansver).sec;
+                }
             }
+            xhr.open('GET', '/cur', true);
+            xhr.send();
         }
-        xhr.open('GET', '/cur', true);
-        xhr.send();
-    }
-
-    function summ() {
-        let secs = 0;
-        setInterval(function(){
-            secs++;
-            cost += +inSecond;
-            timer.innerHTML = (cost/10).toFixed(4) + ' за - ' + (secs/10).toFixed(0) + 'секунд';
-        }, 100);
+    
+        function summ() {
+            let secs = 0;
+            setInterval(function(){
+                secs++;
+                cost += +inSecond;
+                timer.innerHTML = (cost/10).toFixed(4) + ' за - ' + (secs/10).toFixed(0) + 'секунд';
+            }, 100);
+        };
     };
 };
+
+
 
 function getCurrency(){
     let curr = [];
