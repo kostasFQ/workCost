@@ -1,5 +1,6 @@
 window.onload = function() {
     getCurrency(); 
+    
 };
 
 function start(){
@@ -24,37 +25,39 @@ function start(){
 
     function go() {
 
-        let tmpObj = {
-            price:null,
-            mainCurrencies:null,
-            values:null
-        };
-        let obj = {};
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth();
     
-        get();
+        let daysInMonth = 33 - new Date(year, month, 33).getDate();
+        let workDays = 0;
+        for(let i = 1; i <=daysInMonth; i++) {
+            if( (new Date(year, month, i)).getDay() > 0 && (new Date(year, month, i)).getDay() < 6 ) {
+                workDays++;
+            }
+        }
+        console.log(workDays);
+        
+        let enteredValue;
+        let payInSecond;
+    
+        getData();
         showAll();
 
-        function get() {
-            
+        function getData() {
             let xhr = new XMLHttpRequest();
         
             xhr.open('GET', '/cur', false);
             xhr.send(null);
-            let ansver = xhr.responseText;
-            obj = ansver;
-            /*xhr.onreadystatechange = function(){
-                if(xhr.readyState === 4 && xhr.status === 200) {
-                    let ansver = JSON.parse(xhr.responseText);
-                    tmpObj.price = ansver.price;
-                    tmpObj.mainCurrencies = ansver.mainValue;
-                    tmpObj.values = ansver.values;
-                    console.log(tmpObj);
-                    return tmpObj;
-                }
-            }*/
+            let ansver = JSON.parse(xhr.responseText);
+
+            enteredValue = ansver.price;
+            payInSecond = enteredValue;
         }
 
         function showAll() {
+            
+            console.log('days',daysInMonth);
             let s = '00';
             let m = '00';
             let h = '00';
@@ -77,15 +80,6 @@ function start(){
 
             }, 1000)
         }
-
-
-
-        
-
-        
-
-        
-
     };
 };
 
@@ -120,4 +114,5 @@ function getCurrency(){
             }
         }
 };
+
 
