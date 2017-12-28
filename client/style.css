@@ -48,3 +48,6 @@ header{
     box-shadow: 0 0 10px black;
     cursor: pointer;
 }
+td {
+    border: 1px solid black;
+}

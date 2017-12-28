@@ -1,51 +1,91 @@
 window.onload = function() {
-   getCurrency();
+    getCurrency(); 
 };
 
-function post(){
+function start(){
+
     let costInput = document.getElementById('InputCurrencyValue').value;
     let currency = document.getElementById('currency').value;
-    if(!/\D/.test(costInput) && costInput.length > 2) { 
+    let button = document.getElementById('button');
+
+
+    if(!/\D/.test(costInput) && costInput.length > 2 && costInput[0] != 0) { 
         let price =  costInput+' '+currency;
         
         let xhr = new XMLHttpRequest();
         xhr.open('POST','/cur', true);
         xhr.setRequestHeader('Content-Type', 'text/plain');
         xhr.send(price);
-    } else { alert('wrong!') }
+
+        button.setAttribute("disabled", "disabled");
+    } else { alert('wrong!'); return }
 
     go();
 
     function go() {
-        let timer = document.getElementById('timer');
-        let inSecond;
-        let cost = 0;
+
+        let tmpObj = {
+            price:null,
+            mainCurrencies:null,
+            values:null
+        };
+        let obj = {};
     
         get();
-        summ();
-    
+        showAll();
+
         function get() {
+            
             let xhr = new XMLHttpRequest();
         
-            xhr.onreadystatechange = function(){
+            xhr.open('GET', '/cur', false);
+            xhr.send(null);
+            let ansver = xhr.responseText;
+            obj = ansver;
+            /*xhr.onreadystatechange = function(){
                 if(xhr.readyState === 4 && xhr.status === 200) {
-                    let ansver = xhr.responseText;
-                    console.log(JSON.parse(ansver));
-                    inSecond = JSON.parse(ansver).sec;
+                    let ansver = JSON.parse(xhr.responseText);
+                    tmpObj.price = ansver.price;
+                    tmpObj.mainCurrencies = ansver.mainValue;
+                    tmpObj.values = ansver.values;
+                    console.log(tmpObj);
+                    return tmpObj;
                 }
-            }
-            xhr.open('GET', '/cur', true);
-            xhr.send();
+            }*/
         }
-    
-        function summ() {
-            let secs = 0;
+
+        function showAll() {
+            let s = '00';
+            let m = '00';
+            let h = '00';
+
             setInterval(function(){
-                secs++;
-                cost += +inSecond;
-                timer.innerHTML = (cost/10).toFixed(4) + ' за - ' + (secs/10).toFixed(0) + 'секунд';
-            }, 100);
-        };
+
+                s++;
+                if(+s < 10) s = "0"+s;
+                if( +s === 60 ) {
+                    s = '0'+0;
+                    m++;
+                    if(m > 0 && m < 10) m = '0'+m;
+                    if(+m === 60 ) {
+                        m = '0'+0; 
+                        h++;
+                        if(+h < 10) h = '0'+h;
+                    }
+                }
+                button.innerText = h+":"+m+":"+s    ;
+
+            }, 1000)
+        }
+
+
+
+        
+
+        
+
+        
+
     };
 };
 
@@ -57,6 +97,7 @@ function getCurrency(){
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://www.nbrb.by/API/ExRates/Rates?Periodicity=0', true);
     xhr.send();
+    
 
         xhr.onreadystatechange = function(){
             if(xhr.readyState === 4 && xhr.status === 200) {
@@ -66,19 +107,17 @@ function getCurrency(){
                     val.Cur_Abbreviation === "EUR" || 
                     val.Cur_Abbreviation === "RUB" ||
                     val.Cur_Abbreviation === "UAH") {
-                        curr.push({'scale':val.Cur_Scale, 'name':val.Cur_Name, 'rate':val.Cur_OfficialRate})
+                        curr.push({'scale':val.Cur_Scale, 'name':val.Cur_Name, 'rate':val.Cur_OfficialRate, abbreviation: val.Cur_Abbreviation})
                     };
-                    return curr;
+                    //console.log( 'curr' ,curr);
                 } );
                 let sendCurr = JSON.stringify(curr)
-                console.log( sendCurr );
 
                 let newXhr = new XMLHttpRequest();
                 newXhr.open('POST','/allCurrency', true);
                 newXhr.setRequestHeader('Content-Type', 'text/plain');
-                newXhr.send(sendCurr);
+                newXhr.send(sendCurr);    
             }
-            
         }
 };
 

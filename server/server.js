@@ -24,11 +24,26 @@ app.get('/cur', function(req, res) {
     let hour = day/8;
     let min = hour/60;
     let sec = +(min/60).toFixed(5);
+
+    let uah = allCurrency[0];
+    let usd = allCurrency[1];
+    let eur = allCurrency[2];
+    let rub = allCurrency[3];
+    let byn = 1;
+
+
     res.send( {
-        day : day,
-        hour : hour,
-        min : min,
-        sec : sec,
+        price : price[0],
+        values : {
+            "UAH" : uah,
+            "USD" : usd,
+            "EUR" : eur,
+            "RUB" : rub,
+            "BYN" : byn
+
+        },
+        mainValue : price[1]
+        
     }  );
 } );
 
