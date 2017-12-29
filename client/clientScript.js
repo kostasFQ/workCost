@@ -8,6 +8,10 @@ function start(){
     let costInput = document.getElementById('InputCurrencyValue').value;
     let currency = document.getElementById('currency').value;
     let button = document.getElementById('button');
+    let table = document.getElementsByTagName('table')[0];
+    document.styleSheets[0].addRule('table', 'visibility : visible');
+
+    const BYN = document.getElementById('BYN')
 
 
     if(!/\D/.test(costInput) && costInput.length > 2 && costInput[0] != 0) { 
@@ -32,7 +36,7 @@ function start(){
         let daysInMonth = 33 - new Date(year, month, 33).getDate();
         let workDays = 0;
 
-        let enteredValue;
+        let monthSalary;
         let enteredCurrency;
         let alternativeCyrrencies;
 
@@ -41,6 +45,8 @@ function start(){
                 workDays++;
             }
         }
+
+
     
         getData();
 
@@ -52,7 +58,7 @@ function start(){
             xhr.onreadystatechange = function(){
                 if(xhr.readyState === 4 && xhr.status === 200){
                     let ansver = JSON.parse(xhr.responseText);
-                    enteredValue = ansver.price;
+                    monthSalary = ansver.price;
                     enteredCurrency = ansver.mainValue;
                     alternativeCyrrencies = ansver.values;
 
@@ -62,29 +68,42 @@ function start(){
         }
 
         function showAll() {
-            console.log(alternativeCyrrencies);
-
+            let salaryInMilisecond = +monthSalary/workDays/8/60/60/100; 
+            let finalCost = 0;
+            
+            let ms = 0;
             let s = '00';
             let m = '00';
             let h = '00';
 
             setInterval(function(){
+                finalCost += +salaryInMilisecond;
 
-                s++;
-                if(+s < 10) s = "0"+s;
-                if( +s === 60 ) {
-                    s = '0'+0;
-                    m++;
-                    if(m > 0 && m < 10) m = '0'+m;
-                    if(+m === 60 ) {
-                        m = '0'+0; 
-                        h++;
-                        if(+h < 10) h = '0'+h;
+                ms++;
+                if ( ms === 100 ) {
+                    s++;
+                    ms = 0;
+                    if(+s < 10) s = "0"+s;
+                    if( +s === 60 ) {
+                        s = '0'+0;
+                        m++;
+                        if(m > 0 && m < 10) m = '0'+m;
+                        if(+m === 60 ) {
+                            m = '0'+0; 
+                            h++;
+                            if(+h < 10) h = '0'+h;
+                        }
                     }
+                    button.innerText = h+":"+m+":"+s;
                 }
-                button.innerText = h+":"+m+":"+s    ;
 
-            }, 1000)
+                alternativeCyrrencies.map( function(item, index) {
+                    if (item.abbreviation !== enteredCurrency ) {
+                        let tmpCell = document.getElementById(item.abbreviation);
+                        tmpCell.innerText = (finalCost*item.scale/item.rate).toFixed(4) + ' '+ item.abbreviation;
+                    };
+                } )
+            }, 10)
         }
     };
 };

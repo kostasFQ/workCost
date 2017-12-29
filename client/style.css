@@ -48,6 +48,10 @@ header{
     box-shadow: 0 0 10px black;
     cursor: pointer;
 }
+table{
+    visibility: hidden;  
+}
+
 td {
     border: 1px solid black;
 }
