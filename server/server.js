@@ -25,23 +25,10 @@ app.get('/cur', function(req, res) {
     let min = hour/60;
     let sec = +(min/60).toFixed(5);
 
-    let uah = allCurrency[0];
-    let usd = allCurrency[1];
-    let eur = allCurrency[2];
-    let rub = allCurrency[3];
-    let byn = 1;
-
 
     res.send( {
         price : price[0],
-        values : {
-            "UAH" : uah,
-            "USD" : usd,
-            "EUR" : eur,
-            "RUB" : rub,
-            "BYN" : byn
-
-        },
+        values : [allCurrency[0], allCurrency[1], allCurrency[2], allCurrency[3], {scale :  1, name : "Белорусский рубль", rate : 1.0000, abbreviation : "BYN"}],
         mainValue : price[1]
         
     }  );

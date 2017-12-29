@@ -31,33 +31,39 @@ function start(){
     
         let daysInMonth = 33 - new Date(year, month, 33).getDate();
         let workDays = 0;
+
+        let enteredValue;
+        let enteredCurrency;
+        let alternativeCyrrencies;
+
         for(let i = 1; i <=daysInMonth; i++) {
             if( (new Date(year, month, i)).getDay() > 0 && (new Date(year, month, i)).getDay() < 6 ) {
                 workDays++;
             }
         }
-        console.log(workDays);
-        
-        let enteredValue;
-        let payInSecond;
     
         getData();
-        showAll();
 
         function getData() {
             let xhr = new XMLHttpRequest();
         
-            xhr.open('GET', '/cur', false);
+            xhr.open('GET', '/cur', true);
             xhr.send(null);
-            let ansver = JSON.parse(xhr.responseText);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    let ansver = JSON.parse(xhr.responseText);
+                    enteredValue = ansver.price;
+                    enteredCurrency = ansver.mainValue;
+                    alternativeCyrrencies = ansver.values;
 
-            enteredValue = ansver.price;
-            payInSecond = enteredValue;
+                    showAll();
+                }
+            }
         }
 
         function showAll() {
-            
-            console.log('days',daysInMonth);
+            console.log(alternativeCyrrencies);
+
             let s = '00';
             let m = '00';
             let h = '00';
