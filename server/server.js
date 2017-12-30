@@ -5,6 +5,24 @@ const bodyParser = require('body-parser');
 let price = [];
 let allCurrency = [];
 
+let bonusList = [
+    {
+        id : 'hamburger',
+        bonusName : 'Гамбургер',
+        bonusCost : 1.7
+    },
+    {
+        id : 'coffee',
+        bonusName : 'Капуччино',
+        bonusCost : 2.5
+    },
+    {
+        id : 'tickets',
+        bonusName : 'талон на проезд',
+        bonusCost : 0.5
+    }
+];
+
 
 app.use(express.static('client'));
 app.use(bodyParser.text());
@@ -29,7 +47,8 @@ app.get('/cur', function(req, res) {
     res.send( {
         price : price[0],
         values : [allCurrency[0], allCurrency[1], allCurrency[2], allCurrency[3], {scale :  1, name : "Белорусский рубль", rate : 1.0000, abbreviation : "BYN"}],
-        mainValue : price[1]
+        mainValue : price[1],
+        bonusList : bonusList
         
     }  );
 } );

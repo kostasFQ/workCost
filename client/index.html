@@ -12,26 +12,28 @@
         <div class="headerTitle"> Сколько стоит твое время..? </div>
     </header>
 
-    <div class="mainInput">
+    <div class="center">
         <input type="text" id='InputCurrencyValue' placeholder="Оклад">
         <span id="currency">BYN</span>
-        
    </div> 
-   <div class="mainInput">
-    <button onclick=start() id='button'>Расчет</button>
-   </div>
-   <table>
-       <tbody>
-           <tr>
-               <td id='BYN'>BYN</td>
-               <td id='RUB'>RUB</td>
-               <td id='USD'>USD</td>
-               <td id='EUR'>EUR</td>
-               <td id='UAH'>UAH</td>
-           </tr>
-       </tbody>
-   </table>
 
+   <div class="center">
+       <button onclick=start() id='button'>Расчет</button>
+   </div>
+   <div class="tab center">
+       <div id='BYN'></div>
+       <div class="flx">
+            <div>
+                <div id='RUB'></div>
+                <div id='USD'></div>
+            </div>
+            <div>
+                <div id='EUR'></div>
+                <div id='UAH'></div>
+            </div>
+       </div>
+       
+   </div>
     
     <script src="./clientScript.js"></script>
 </body>

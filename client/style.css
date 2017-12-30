@@ -1,22 +1,24 @@
 body{
     margin: 0;
     padding: 0;
+    min-width: 320px;
+    height: 100%;
+    background: linear-gradient(to left, pink 20%, lightcyan 20%, lightcyan 80%, pink 80%);
 }
 
 header{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-
     width: 100%;
     box-sizing: border-box;
+    justify-content: center;
+
 }
 .headerTitle {
     display: flex;  
     font-size: 4em;
+    
 }
-.mainInput{
+.center{
     display: flex;
     justify-content: center;
 }
@@ -28,15 +30,19 @@ header{
     border-top: none;
     border-left: none;
     border-right: none;
+    background: lightgrey;
+    color: black;
+    border-radius: 5px 0 0 5px;
 }
+input::placeholder { color: rgb(61, 60, 60) }
 #currency{
-    background: none; 
+    background: lightgrey; 
+    border-radius: 0 5px 5px 0; 
     font-size: 2em;
     border-bottom: 2px solid black;
     border-top: none;
     border-left: none;
     border-right: none; 
-    cursor: pointer;
 }
 #button {
     margin-top: 1%;
@@ -48,10 +54,25 @@ header{
     box-shadow: 0 0 10px black;
     cursor: pointer;
 }
-table{
-    visibility: hidden;  
+.tab{
+    visibility: hidden;
+    flex-direction: column;
+    align-items: center;
 }
-
-td {
-    border: 1px solid black;
+.flx {
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+    justify-content: space-between;
+    font-size: large;
+}
+#bonus {
+    list-style: none;
+}
+.bonusList {
+    font-size: x-large;
+}
+#BYN {
+    font-size: 2.5em;
+    font-weight: bold; 
 }
