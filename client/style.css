@@ -32,6 +32,7 @@ header{
     border-right: none;
     color: black;
     border-radius: 5px 0 0 5px;
+    
 }
 #currency{
     background: white;
@@ -41,11 +42,13 @@ header{
     border-top: none;
     border-left: none;
     border-right: none; 
+    height:40px ;
 }
 #button {
     margin-top: 1%;
     font-size: 2em;
     width: 40%;
+    min-width: 200px;
     background: white;
     border: none;
     border-radius: 5px;
@@ -66,6 +69,7 @@ header{
 }
 #bonus {
     list-style: none;
+    margin-left: -30px; 
 }
 .bonusList {
     font-size: x-large;
