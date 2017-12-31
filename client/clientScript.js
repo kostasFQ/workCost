@@ -128,10 +128,10 @@ function start(){
                         if( units >= 1 ) {
                             let bonusCell = document.getElementById(item.id);
                             bonusCell.classList.add('full');
-                            bonusCell.innerText = `${item.bonusName} стоимостью ${item.bonusCost} руб. - ${units} шт.`;
+                            bonusCell.innerText = `${item.bonusName} (${item.bonusCost} руб.) - ${units} шт.`;
                         } else {
                             let bonusCell = document.getElementById(item.id);
-                            bonusCell.innerText = `${Math.round(eq*100)}% ${item.bonusName}`;
+                            bonusCell.innerText = `${(eq*100).toFixed(2)}% ${item.bonusName}`;
                         }
                     
                 } );

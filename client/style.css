@@ -83,7 +83,7 @@ ul {
 .inBonusList {
     display: flex;
     width: 100%;
-    font-size: x-large;
+    font-size: large;
 }
 .full {
     justify-content: flex-end;

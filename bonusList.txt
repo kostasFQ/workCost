@@ -1,17 +1,23 @@
 [    
     {
         "id" : "hamburger",
-        "bonusName" : "Гамбургер",
+        "bonusName" : "Гамбургер в Burger king",
         "bonusCost" : 1.7
     },
     {
         "id" : "coffee",
-        "bonusName" : "Капуччино",
+        "bonusName" : "Капуччино в Royal coffee",
         "bonusCost" : 2.5
     },
     {
         "id" : "tickets",
-        "bonusName" : "талон на проезд",
+        "bonusName" : "Талон",
         "bonusCost" : 0.5
+        
+    },
+    {
+        "id" : "matches",
+        "bonusName" : "Коробок спичек",
+        "bonusCost" : 0.05
     }
 ]
