@@ -71,11 +71,22 @@ header{
     font-size: large;
 }
 #bonus {
-    list-style: none;
-    margin-left: -30px; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid black;
 }
-.bonusList {
+ul {
+    list-style: none;
+    padding-left: 10px;
+}
+.inBonusList {
+    display: flex;
+    width: 100%;
     font-size: x-large;
+}
+.full {
+    justify-content: flex-end;
 }
 #BYN {
     font-size: 2.5em;

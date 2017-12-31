@@ -1,6 +1,6 @@
 window.onload = function() {
     getCurrency(); //get currencies rates and send to server
-    
+
 };
 
 function start(){
@@ -72,11 +72,16 @@ function start(){
                     alternativeCyrrencies = ansver.values;
                     bonusList = ansver.bonusList;
 
+                    bonusList.sort( function( a,b ) {
+                        return a.bonusCost - b.bonusCost;
+                    } );
+                    console.log('bonusList', bonusList);
+
                     //create li's for bonuslist
                     bonusList.map( function(item, index) {
                         let elem = document.createElement('li');
                         elem.setAttribute('id', item.id);
-                        elem.setAttribute('class', 'bonusList')
+                        elem.setAttribute('class', 'inBonusList')
                         bonusField.appendChild(elem);
                     } );
 
@@ -120,10 +125,15 @@ function start(){
                 }
                 //show bonuses
                 bonusList.map( function(item, index) {
-                    let units = Math.floor(finalCost / item.bonusCost)
+                    let eq = finalCost / item.bonusCost;
+                    let units = Math.floor(eq);
                         if( units >= 1 ) {
                             let bonusCell = document.getElementById(item.id);
+                            bonusCell.classList.add('full');
                             bonusCell.innerText = `${item.bonusName} стоимостью ${item.bonusCost} руб. - ${units} шт.`;
+                        } else {
+                            let bonusCell = document.getElementById(item.id);
+                            bonusCell.innerText = `${Math.round(eq*100)}% ${item.bonusName}`;
                         }
                     
                 } );
