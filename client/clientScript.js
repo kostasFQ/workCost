@@ -66,7 +66,6 @@ function start(){
             xhr.onreadystatechange = function(){
                 if(xhr.readyState === 4 && xhr.status === 200){
                     let ansver = JSON.parse(xhr.responseText);
-                    console.log(ansver);
                     monthSalary = ansver.price;
                     enteredCurrency = ansver.mainValue;
                     alternativeCyrrencies = ansver.values;
@@ -75,7 +74,6 @@ function start(){
                     bonusList.sort( function( a,b ) {
                         return a.bonusCost - b.bonusCost;
                     } );
-                    console.log('bonusList', bonusList);
 
                     //create li's for bonuslist
                     bonusList.map( function(item, index) {
