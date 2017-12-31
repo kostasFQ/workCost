@@ -122,10 +122,9 @@ function start(){
                 bonusList.map( function(item, index) {
                     let units = Math.floor(finalCost / item.bonusCost)
                         if( units >= 1 ) {
-                            
                             let bonusCell = document.getElementById(item.id);
                             bonusCell.innerText = `${item.bonusName} стоимостью ${item.bonusCost} руб. - ${units} шт.`;
-                         }
+                        }
                     
                 } );
                 
