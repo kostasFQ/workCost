@@ -32,9 +32,12 @@ header{
     border-right: none;
     color: black;
     border-radius: 5px 0 0 5px;
+    height: 40px;
+    box-sizing: border-box;
     
 }
 #currency{
+    box-sizing: border-box;
     background: white;
     border-radius: 0 5px 5px 0; 
     font-size: 2em;
@@ -42,7 +45,7 @@ header{
     border-top: none;
     border-left: none;
     border-right: none; 
-    height:40px ;
+    height: 40px ;
 }
 #button {
     margin-top: 1%;
