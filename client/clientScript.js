@@ -6,7 +6,7 @@ window.onload = function() {
 function start(){
 
     let costInput = document.getElementById('InputCurrencyValue').value;
-    let currency = document.getElementById('currency').value;
+    let currency = document.getElementById('currency').textContent;
     let button = document.getElementById('button');
     const body = document.getElementsByTagName('body')[0];
 
@@ -24,7 +24,7 @@ function start(){
 
     //send entered value to server
     if(!/\D/.test(costInput) && costInput.length > 2 && costInput[0] != 0) { 
-        let price =  costInput+' '+currency;
+        let price =  costInput;//+' '+currency;
         
         let xhr = new XMLHttpRequest();
         xhr.open('POST','/cur', true);
@@ -66,6 +66,7 @@ function start(){
             xhr.onreadystatechange = function(){
                 if(xhr.readyState === 4 && xhr.status === 200){
                     let ansver = JSON.parse(xhr.responseText);
+                    console.log(ansver);
                     monthSalary = ansver.price;
                     enteredCurrency = ansver.mainValue;
                     alternativeCyrrencies = ansver.values;
@@ -147,7 +148,7 @@ function getCurrency(){
     let curr = [];
 
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://www.nbrb.by/API/ExRates/Rates?Periodicity=0', true);
+    xhr.open('GET', 'https://www.nbrb.by/API/ExRates/Rates?Periodicity=0', true);
     xhr.send();
     
 

@@ -30,13 +30,11 @@ header{
     border-top: none;
     border-left: none;
     border-right: none;
-    background: lightgrey;
     color: black;
     border-radius: 5px 0 0 5px;
 }
-input::placeholder { color: rgb(61, 60, 60) }
 #currency{
-    background: lightgrey; 
+    background: white;
     border-radius: 0 5px 5px 0; 
     font-size: 2em;
     border-bottom: 2px solid black;

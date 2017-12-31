@@ -1,0 +1,17 @@
+[    
+    {
+        "id" : "hamburger",
+        "bonusName" : "Гамбургер",
+        "bonusCost" : 1.7
+    },
+    {
+        "id" : "coffee",
+        "bonusName" : "Капуччино",
+        "bonusCost" : 2.5
+    },
+    {
+        "id" : "tickets",
+        "bonusName" : "талон на проезд",
+        "bonusCost" : 0.5
+    }
+]

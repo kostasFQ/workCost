@@ -1,27 +1,14 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 let price = [];
 let allCurrency = [];
 
-let bonusList = [
-    {
-        id : 'hamburger',
-        bonusName : 'Гамбургер',
-        bonusCost : 1.7
-    },
-    {
-        id : 'coffee',
-        bonusName : 'Капуччино',
-        bonusCost : 2.5
-    },
-    {
-        id : 'tickets',
-        bonusName : 'талон на проезд',
-        bonusCost : 0.5
-    }
-];
+const bonusList = JSON.parse(fs.readFileSync('bonusList.txt').toString());
+
+console.log(bonusList);
 
 
 app.use(express.static('client'));
@@ -34,19 +21,14 @@ app.post('/cur', function(req, res) {
 
 app.post('/allCurrency', function(req, res){
     allCurrency = JSON.parse(req.body);
-    console.log(allCurrency);
+    //console.log(allCurrency);
 })
 
 app.get('/cur', function(req, res) {
-    let day = +price[0]/21;
-    let hour = day/8;
-    let min = hour/60;
-    let sec = +(min/60).toFixed(5);
-
 
     res.send( {
-        price : price[0],
-        values : [allCurrency[0], allCurrency[1], allCurrency[2], allCurrency[3], {scale :  1, name : "Белорусский рубль", rate : 1.0000, abbreviation : "BYN"}],
+        price : +price[0],
+        values : [...allCurrency, {scale :  1, name : "Белорусский рубль", rate : 1.0000, abbreviation : "BYN"}],
         mainValue : price[1],
         bonusList : bonusList
         
