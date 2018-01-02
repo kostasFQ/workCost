@@ -18,9 +18,9 @@ function start(){
     bonusField.appendChild(bonusFieldSpan);
     body.appendChild(bonusField);
 
-
-    document.styleSheets[0].addRule('.tab', 'visibility : visible');
-    const BYN = document.getElementById('BYN')
+    let tab = document.getElementsByClassName('tab');
+    tab[0].setAttribute('style', 'visibility: visible');
+    const BYN = document.getElementById('BYN');
 
     //send entered value to server
     if(!/\D/.test(costInput) && costInput.length > 2 && costInput[0] != 0) { 
