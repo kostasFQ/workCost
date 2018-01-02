@@ -120,7 +120,7 @@ function start(){
                     
                     
                 }
-                let time = h+":"+m+":"+s+'.'+ms;
+                let time = h+":"+m+":"+s;
                 button.innerText = time;
                 //show bonuses
                 bonusList.map( function(item, index) {
