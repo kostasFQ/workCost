@@ -117,10 +117,11 @@ function start(){
                             if(+h < 10) h = '0'+h;
                         }
                     }
-                    let time = h+":"+m+":"+s
-                    button.innerText = time;
+                    
                     
                 }
+                let time = h+":"+m+":"+s+'.'+ms;
+                button.innerText = time;
                 //show bonuses
                 bonusList.map( function(item, index) {
                     let eq = finalCost / item.bonusCost;
