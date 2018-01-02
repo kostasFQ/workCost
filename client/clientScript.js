@@ -102,7 +102,7 @@ function start(){
                 finalCost += salaryInMilisecond;
 
                 ms++;
-                if ( ms === 10 ) {
+                if ( ms === 100 ) {
 
                     s++;
                     ms = 0;
@@ -145,7 +145,7 @@ function start(){
                     };
                 } ) 
 
-            }, 100)
+            }, 10)
         }
     };
 };
