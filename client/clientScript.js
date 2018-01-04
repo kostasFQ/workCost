@@ -132,45 +132,26 @@ function getCurrency(){
     let curr = [];
 
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://www.nbrb.by/API/ExRates/Rates?Periodicity=0', false);
+    xhr.open('GET', 'https://www.nbrb.by/API/ExRates/Rates?Periodicity=0', true);
     xhr.send();
 
-    if(xhr.status === 200) {
-        let currency = JSON.parse( xhr.responseText);
-        currency.map( function(val, i) {
-            if(val.Cur_Abbreviation === "USD" || 
-            val.Cur_Abbreviation === "EUR" || 
-            val.Cur_Abbreviation === "RUB" ||
-            val.Cur_Abbreviation === "UAH") {
-                curr.push({'scale':val.Cur_Scale, 'name':val.Cur_Name, 'rate':val.Cur_OfficialRate, abbreviation: val.Cur_Abbreviation})
-            };
-        } );
-        let sendCurr = JSON.stringify(curr)
-        // ...and send to server
-        let newXhr = new XMLHttpRequest();
-        newXhr.open('POST','/allCurrency', true);
-        newXhr.setRequestHeader('Content-Type', 'text/plain');
-        newXhr.send(sendCurr);    
-    };
-    
-
-       /* xhr.onreadystatechange = function(){
-            if(xhr.readyState === 4 && xhr.status === 200) {
-                let currency = JSON.parse( xhr.responseText);
-                currency.map( function(val, i) {
-                    if(val.Cur_Abbreviation === "USD" || 
-                    val.Cur_Abbreviation === "EUR" || 
-                    val.Cur_Abbreviation === "RUB" ||
-                    val.Cur_Abbreviation === "UAH") {
-                        curr.push({'scale':val.Cur_Scale, 'name':val.Cur_Name, 'rate':val.Cur_OfficialRate, abbreviation: val.Cur_Abbreviation})
-                    };
-                } );
-                let sendCurr = JSON.stringify(curr)
-                // ...and send to server
-                let newXhr = new XMLHttpRequest();
-                newXhr.open('POST','/allCurrency', true);
-                newXhr.setRequestHeader('Content-Type', 'text/plain');
-                newXhr.send(sendCurr);    
-            }
-        }*/
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200) {
+            let currency = JSON.parse( xhr.responseText);
+            currency.map( function(val, i) {
+                if(val.Cur_Abbreviation === "USD" || 
+                val.Cur_Abbreviation === "EUR" || 
+                val.Cur_Abbreviation === "RUB" ||
+                val.Cur_Abbreviation === "UAH") {
+                    curr.push({'scale':val.Cur_Scale, 'name':val.Cur_Name, 'rate':val.Cur_OfficialRate, abbreviation: val.Cur_Abbreviation})
+                };
+            } );
+            let sendCurr = JSON.stringify(curr)
+            // ...and send to server
+            let newXhr = new XMLHttpRequest();
+            newXhr.open('POST','/allCurrency', true);
+            newXhr.setRequestHeader('Content-Type', 'text/plain');
+            newXhr.send(sendCurr);    
+        }
+    }
 };
