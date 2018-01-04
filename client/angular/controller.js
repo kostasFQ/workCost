@@ -5,6 +5,8 @@ var angularApp = angular.module('angularApp',[]);
 
 angularApp.controller('ctrl', function($scope, $http, $interval) {
 
+    
+
     $scope.Math = window.Math;
 
     $scope.disabled = false;

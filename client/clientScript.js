@@ -128,7 +128,7 @@ getCurrency(); //get currencies rates and send to server
 };
 */
 //get current currency from bank site...
-/*function getCurrency(){
+function getCurrency(){
     let curr = [];
 
     let xhr = new XMLHttpRequest();
@@ -151,10 +151,10 @@ getCurrency(); //get currencies rates and send to server
         newXhr.open('POST','/allCurrency', true);
         newXhr.setRequestHeader('Content-Type', 'text/plain');
         newXhr.send(sendCurr);    
-    };;*/
+    };
     
 
-        xhr.onreadystatechange = function(){
+       /* xhr.onreadystatechange = function(){
             if(xhr.readyState === 4 && xhr.status === 200) {
                 let currency = JSON.parse( xhr.responseText);
                 currency.map( function(val, i) {
@@ -172,5 +172,5 @@ getCurrency(); //get currencies rates and send to server
                 newXhr.setRequestHeader('Content-Type', 'text/plain');
                 newXhr.send(sendCurr);    
             }
-        }
+        }*/
 };
