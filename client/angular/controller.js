@@ -26,10 +26,7 @@ angularApp.controller('ctrl', function($scope, $http, $interval) {
     $http.get('/bonus')
     .then( function( response ) {
         $scope.bonus = response.data.bonusList;
-        //$scope.currensies = response.data.values;
-
         console.log($scope.bonus);
-        console.log($scope.currensies);
 
         $scope.bonus.sort( function( a,b ) {
             return a.bonusCost - b.bonusCost;
