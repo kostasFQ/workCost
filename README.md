@@ -3,4 +3,4 @@ npm i
 <hr style = 'color:black'/>
 npm start
 <hr/>
-work version - https://yoursalary.herokuapp.com/
+<a href = 'https://yoursalary.herokuapp.com/' target='_blanc'>work version<a/>
