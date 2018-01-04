@@ -1,4 +1,6 @@
 # workCost
 npm i
-<hr/>
+<hr/ style = 'color:black'>
 npm start
+<hr/>
+work version - https://yoursalary.herokuapp.com/
