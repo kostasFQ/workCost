@@ -5,12 +5,22 @@ var angularApp = angular.module('angularApp',[]);
 
 angularApp.controller('ctrl', function($scope, $http, $interval) {
 
-    
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth();
+
+    let daysInMonth = 33 - new Date(year, month, 33).getDate();
+    let workDays = 0;
+    for(let i = 1; i <=daysInMonth; i++) {
+        if( (new Date(year, month, i)).getDay() > 0 && (new Date(year, month, i)).getDay() < 6 ) {
+            workDays++;
+        }
+    }
 
     $scope.Math = window.Math;
 
     $scope.disabled = false;
-    $scope.show = true; //todo false
+    $scope.show = false;
     $scope.text = 'Расчет';
 
     $scope.bonus = null;
@@ -45,6 +55,10 @@ angularApp.controller('ctrl', function($scope, $http, $interval) {
     } )
 
     $scope.calc = function(){
+        if( isNaN(+$scope.inputSalary+1) || ($scope.inputSalary).length < 3 || $scope.inputSalary[0] === '0') {
+            alert('Ошибка ввода');
+            return;
+        } else {
         
         $scope.disabled = true;
         $scope.show = true;
@@ -68,11 +82,11 @@ angularApp.controller('ctrl', function($scope, $http, $interval) {
                 }
             };
             $scope.clock = hours+':'+mins+':'+seconds;
-            $scope.salary += $scope.inputSalary/21/8/60/60/100;
+            $scope.salary += $scope.inputSalary/workDays/8/60/60/100;
             $scope.text = $scope.clock;
         },10);
         
-    };
+    };}
 
     
 });
