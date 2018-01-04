@@ -8,7 +8,7 @@ angularApp.controller('ctrl', function($scope, $http, $interval) {
     $scope.Math = window.Math;
 
     $scope.disabled = false;
-    $scope.show = true; //todo false!!!!
+    $scope.show = true; //todo false
     $scope.text = 'Расчет';
 
     $scope.bonus = null;

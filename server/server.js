@@ -19,7 +19,7 @@ app.post('/cur', function(req, res) {
 
 app.post('/allCurrency', function(req, res){
     allCurrency = JSON.parse(req.body);
-    //console.log(allCurrency);
+    console.log(allCurrency);
 })
 
 app.get('/cur', function(req, res) {

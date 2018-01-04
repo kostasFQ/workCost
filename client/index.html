@@ -2,7 +2,6 @@
 <html lang="ru" ng-app='angularApp'>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-    <script src="angular/controller.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
@@ -47,11 +46,13 @@
        </div>
        <div class="center tab" ng-show="show">
             <div id="BYN">{{salary | number:4 }} BYN</div>
+
             <div class='vieu'>
-                <div ng-repeat="unit in currensies" class="flx ">
+                <div ng-repeat="unit in currensies">
                     {{salary * unit.rate | number:4}} {{unit.abbreviation}}
                 </div>
             </div>
+
             <div class="vieu">
                 <div ng-repeat="unit in bonus">
                     <div >
@@ -68,5 +69,6 @@
     </div>
     
     <script src="./clientScript.js"></script>
+    <script src="angular/controller.js"></script>
 </body>
 </html>
