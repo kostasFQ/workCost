@@ -14,7 +14,7 @@ angularApp.controller('ctrl', function($scope, $http, $interval) {
     $scope.text = 'Расчет';
 
     $scope.bonus = null;
-    $scope.currensies = null;
+    $scope.currenties = [];
     $scope.salary = 0;
 
     let ms = 0;
@@ -23,14 +23,30 @@ angularApp.controller('ctrl', function($scope, $http, $interval) {
     let hours = '00';
     $scope.clock = null;
 
-    $http.get('/cur')
+    $http.get('/bonus')
     .then( function( response ) {
         $scope.bonus = response.data.bonusList;
-        $scope.currensies = response.data.values;
+        //$scope.currensies = response.data.values;
+
+        console.log($scope.bonus);
+        console.log($scope.currensies);
 
         $scope.bonus.sort( function( a,b ) {
             return a.bonusCost - b.bonusCost;
         } );
+    } );
+    $http.get('https://www.nbrb.by/API/ExRates/Rates?Periodicity=0')
+    .then( function ( response ) {
+        let curAns = response.data;
+        curAns.map( function(val, i) {
+            if(val.Cur_Abbreviation === "USD" || 
+            val.Cur_Abbreviation === "EUR" || 
+            val.Cur_Abbreviation === "RUB" ||
+            val.Cur_Abbreviation === "UAH") {
+                $scope.currenties.push({'scale':val.Cur_Scale, 'name':val.Cur_Name, 'rate':val.Cur_OfficialRate, abbreviation: val.Cur_Abbreviation})
+            };
+        } )
+        console.log('xxx', $scope.currenties);
     } )
 
     $scope.calc = function(){

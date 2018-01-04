@@ -48,7 +48,7 @@
             <div id="BYN">{{salary | number:4 }} BYN</div>
 
             <div class='vieu tab'>
-                <div ng-repeat="unit in currensies">
+                <div ng-repeat="unit in currenties">
                     {{salary * unit.rate | number:4}} {{unit.abbreviation}}
                 </div>
             </div>
@@ -68,7 +68,7 @@
         </div>
     </div>
     
-    <script src="./clientScript.js"></script>
+    <!--<script src="./clientScript.js"></script>-->
     <script src="angular/controller.js"></script>
 </body>
 </html>
