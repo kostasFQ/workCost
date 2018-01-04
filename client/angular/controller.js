@@ -26,7 +26,6 @@ angularApp.controller('ctrl', function($scope, $http, $interval) {
     $http.get('/bonus')
     .then( function( response ) {
         $scope.bonus = response.data.bonusList;
-        console.log($scope.bonus);
 
         $scope.bonus.sort( function( a,b ) {
             return a.bonusCost - b.bonusCost;
@@ -43,7 +42,6 @@ angularApp.controller('ctrl', function($scope, $http, $interval) {
                 $scope.currenties.push({'scale':val.Cur_Scale, 'name':val.Cur_Name, 'rate':val.Cur_OfficialRate, abbreviation: val.Cur_Abbreviation})
             };
         } )
-        console.log('xxx', $scope.currenties);
     } )
 
     $scope.calc = function(){
