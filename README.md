@@ -1,3 +1,4 @@
 # workCost
 npm i
-npm run server
+<hr/>
+npm start
