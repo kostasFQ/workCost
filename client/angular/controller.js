@@ -58,7 +58,7 @@ angularApp.controller('ctrl', function($scope, $http, $interval) {
         if( isNaN(+$scope.inputSalary+1) || ($scope.inputSalary).length < 3 || $scope.inputSalary[0] === '0') {
             alert('Ошибка ввода');
             return;
-        } else {
+        }
         
         $scope.disabled = true;
         $scope.show = true;
@@ -86,7 +86,7 @@ angularApp.controller('ctrl', function($scope, $http, $interval) {
             $scope.text = $scope.clock;
         },10);
         
-    };}
+    };
 
     
 });
