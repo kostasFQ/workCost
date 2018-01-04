@@ -23,7 +23,7 @@
     {
         "id" : "matches",
         "place" : "",
-        "bonusName" : "Коробок спичек",
+        "bonusName" : "Коробoк спичек",
         "bonusCost" : 0.05,
         "site" : ""
     }
