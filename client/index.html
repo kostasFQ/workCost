@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" ng-app='angularApp'>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="angular/controller.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <title>How you cost</title>
 </head>
@@ -12,7 +13,7 @@
         <div class="headerTitle"> Сколько стоит твое время..? </div>
     </header>
 
-    <div class="center">
+    <!--<div class="center">
         <input type="text" id='InputCurrencyValue' placeholder="Оклад">
         <span id="currency">BYN</span>
    </div> 
@@ -20,6 +21,8 @@
    <div class="center">
        <button onclick=start() id='button'>Расчет</button>
    </div>
+
+
    <div class="tab center">
        <div id='BYN'></div>
        <div class="flx">
@@ -33,7 +36,36 @@
             </div>
        </div>
        
-   </div>
+   </div>-->
+
+   <div id="angular" ng-controller="ctrl">
+       <div class="center">
+            <input ng-model="inputSalary" type="text" placeholder="Оклад" id='InputCurrencyValue' hand-enter='calc()' required> <span id="currency">BYN</span>
+       </div>
+       <div class="center">
+           <button ng-click="calc()" id='button' ng-disabled="disabled" >{{text}}</button>
+       </div>
+       <div class="center tab" ng-show="show">
+            <div id="BYN">{{salary | number:4 }} BYN</div>
+            <div class='vieu'>
+                <div ng-repeat="unit in currensies" class="flx ">
+                    {{salary * unit.rate | number:4}} {{unit.abbreviation}}
+                </div>
+            </div>
+            <div class="vieu">
+                <div ng-repeat="unit in bonus">
+                    <div >
+                        <div ng-if="(salary/unit.bonusCost)*100 < 100">
+                            {{unit.bonusName}} <a ng-href="{{unit.site}}" target="_black">{{unit.place}}</a>  - {{(salary/unit.bonusCost)*100 | number:0}}%
+                        </div> 
+                        <div ng-if="(salary/unit.bonusCost)*100 > 100" class = 'full'>
+                            {{unit.bonusName}}&nbsp; <a ng-href="{{unit.site}}" target="_black">{{unit.place}}</a> - {{Math.floor(salary/unit.bonusCost)}}(шт.)
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
     
     <script src="./clientScript.js"></script>
 </body>

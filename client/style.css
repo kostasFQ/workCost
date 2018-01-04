@@ -5,17 +5,19 @@ body{
     height: 100%;
     background: linear-gradient(to left, pink 20%, lightcyan 20%, lightcyan 80%, pink 80%);
 }
-
 header{
     display: flex;
     width: 100%;
     box-sizing: border-box;
     justify-content: center;
-
+}
+a {
+    text-decoration: none;
+    font-weight: bolder;
 }
 .headerTitle {
     display: flex;  
-    font-size: 4em;
+    font-size: 3em;
     
 }
 .center{
@@ -59,16 +61,22 @@ header{
     cursor: pointer;
 }
 .tab{
-    visibility: hidden;
     flex-direction: column;
     align-items: center;
 }
 .flx {
     display: flex;
     flex-direction: row;
-    width: 250px;
-    justify-content: space-between;
+    justify-content: center;
     font-size: large;
+}
+.vieu{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+    font-size: 1.2em;
 }
 #bonus {
     display: flex;
@@ -85,9 +93,14 @@ ul {
     font-size: large;
 }
 .full {
+    display: flex;
     justify-content: flex-end;
+    font-weight: bold;
 }
 #BYN {
     font-size: 2.5em;
     font-weight: bold; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

@@ -1,23 +1,30 @@
 [    
     {
         "id" : "hamburger",
-        "bonusName" : "Гамбургер в Burger king",
-        "bonusCost" : 1.7
+        "bonusName" : "Гамбургер",
+        "place" : "Burger King",
+        "bonusCost" : 1.7,
+        "site" : "https://burger-king.by/"
     },
     {
         "id" : "coffee",
-        "bonusName" : "Капуччино в Royal coffee",
-        "bonusCost" : 2.5
+        "bonusName" : "Капучино",
+        "place" : "Royal coffee",
+        "bonusCost" : 2.6,
+        "site" : "https://carte.by/brest/royal/" 
     },
     {
         "id" : "tickets",
+        "place" : "",
         "bonusName" : "Талон",
-        "bonusCost" : 0.5
-        
+        "bonusCost" : 0.5,
+        "site" : ""
     },
     {
         "id" : "matches",
+        "place" : "",
         "bonusName" : "Коробок спичек",
-        "bonusCost" : 0.05
+        "bonusCost" : 0.05,
+        "site" : ""
     }
 ]

@@ -3,7 +3,7 @@ window.onload = function() {
 
 };
 
-function start(){
+/*function start(){
 
     let costInput = document.getElementById('InputCurrencyValue').value;
     let currency = document.getElementById('currency').textContent;
@@ -117,11 +117,11 @@ function start(){
                             if(+h < 10) h = '0'+h;
                         }
                     }
-                    
+                    let time = h+":"+m+":"+s;
+                    button.innerText = time;
                     
                 }
-                let time = h+":"+m+":"+s;
-                button.innerText = time;
+                
                 //show bonuses
                 bonusList.map( function(item, index) {
                     let eq = finalCost / item.bonusCost;
@@ -150,7 +150,7 @@ function start(){
     };
 };
 
-
+*/
 //get current currency from bank site...
 function getCurrency(){
     let curr = [];

@@ -25,9 +25,9 @@ app.post('/allCurrency', function(req, res){
 app.get('/cur', function(req, res) {
 
     res.send( {
-        price : +price[0],
-        values : [...allCurrency, {scale :  1, name : "Белорусский рубль", rate : 1.0000, abbreviation : "BYN"}],
-        mainValue : price[1],
+        //price : +price[0],
+        values : allCurrency,
+        //mainValue : price[1],
         bonusList : bonusList
         
     }  );
