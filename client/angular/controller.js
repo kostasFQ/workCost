@@ -52,6 +52,9 @@ angularApp.controller('ctrl', function($scope, $http, $interval) {
                 $scope.currenties.push({'scale':val.Cur_Scale, 'name':val.Cur_Name, 'rate':val.Cur_OfficialRate, abbreviation: val.Cur_Abbreviation})
             };
         } )
+        $scope.currenties.sort(function (a,b){
+            return a.rate - b.rate;
+        });
     } )
 
     $scope.calc = function(){
