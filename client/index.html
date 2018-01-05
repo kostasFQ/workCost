@@ -54,7 +54,7 @@
 
             <div class='vieu tab'>
                 <div ng-repeat="unit in currenties">
-                    {{salary * unit.rate | number:4}} {{unit.abbreviation}}
+                    {{salary * unit.scale/unit.rate | number:4}} {{unit.abbreviation}}
                 </div>
             </div>
 
