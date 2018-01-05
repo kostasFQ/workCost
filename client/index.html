@@ -37,13 +37,14 @@
        
    </div>-->
 
-   <div id="angular" ng-controller="ctrl">
+   <div id="angular" ng-controller="ctrl" >
        <div class="center">
             <input ng-model="inputSalary" 
             type="text" 
             placeholder="Оклад" 
             id='InputCurrencyValue' 
             hand-enter='calc()' 
+            ng-disabled="disabled"
             required> <span id="currency">BYN</span>
        </div>
        <div class="center">
