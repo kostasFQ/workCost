@@ -7,7 +7,7 @@ const fs = require('fs');
 //let allCurrency = [];
 
 const bonusList = JSON.parse(fs.readFileSync('bonusList.txt').toString());
-console.log(bonusList);
+//console.log(bonusList);
 
 app.use(express.static('client'));
 app.use(bodyParser.text());
